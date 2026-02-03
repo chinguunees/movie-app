@@ -5,6 +5,8 @@ import { Nowplaying } from "./components/Nowplaying";
 import { Upcoming } from "./components/Upcoming";
 import { Toprated } from "./components/Toprated";
 import { Popular } from "./components/Popular";
+import { FooterArea } from "./components/FooterArea";
+import { Carousel } from "@/components/ui/carousel";
 
 export default function Home() {
   return (
@@ -14,6 +16,8 @@ export default function Home() {
       <Upcoming />
       <Toprated />
       <Popular />
+      <FooterArea />
+      <Carousel />
     </div>
   );
 }

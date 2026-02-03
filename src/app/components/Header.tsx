@@ -18,9 +18,13 @@ export const Header = () => {
         </div>
       </div>
       <div />
-      <div className="hidden gap-50 justify-between md:flex md:w-full lg:justify-between 2xl:justify-between">
+      <div className="hidden gap-50 justify-between md:flex md:w-full md:justify-between lg:justify-between 2xl:justify-between">
         <img className="w-[92px]" src="/Logo.svg" alt="" />
-        <Button variant="outline" size="icon" className="w-[370px] lg:flex ">
+        <Button
+          variant="outline"
+          size="icon"
+          className="w-[370px] lg:flex md:w-[150px] lg:w-[370px] "
+        >
           <Search />
           Search...
         </Button>
