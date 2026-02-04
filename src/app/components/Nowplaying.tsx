@@ -84,7 +84,7 @@ const NowplayingDesktop = () => {
     <div className="hidden flex-col w-full md:flex relative min-w-full">
       <img
         className="max-h-[600px] w-[1440px] object-cover mx-auto"
-        src="/wicked.jpg"
+        src="/herostar.png"
         alt=""
       />
       <div className="absolute top-1/2 right-2/9">
@@ -97,7 +97,7 @@ const NowplayingDesktop = () => {
         <div className="flex justify-between items-center py-5">
           <div>
             <p>Now Playing:</p>
-            <h1 className="font-bold text-2xl text-[#fb8500]">Wicked</h1>
+            <h1 className="font-bold text-2xl text-[#fb8500]">Star Wars</h1>
           </div>
           <div className="flex">
             <Star fill="#fb8500" color="#fb8500" />
