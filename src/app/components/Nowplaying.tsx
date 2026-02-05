@@ -45,7 +45,7 @@ export const Nowplaying = () => {
 const NowplayingMobile = () => {
   return (
     <div className="flex flex-col w-full md:hidden">
-      <img src="/wicked.jpg" alt="" />
+      <img src="/vader.jpg" alt="" />
       <div className="absolute top-1/4 right-2/9">
         <CarouselNext />
       </div>
@@ -56,7 +56,7 @@ const NowplayingMobile = () => {
         <div className="flex justify-between items-center py-5">
           <div>
             <p>Now Playing:</p>
-            <h1 className="font-bold text-2xl">Wicked</h1>
+            <h1 className="font-bold text-2xl text-[#fb8500]">Star Wars III</h1>
           </div>
           <div className="flex">
             <Star />
@@ -65,10 +65,9 @@ const NowplayingMobile = () => {
         </div>
         <div className="pb-5">
           <p>
-            Elphaba, a misunderstood young woman because of her green skin, and
-            Glinda, a popular girl, become friends at Shiz University in the
-            Land of Oz. After an encounter with the Wonderful Wizard of Oz,
-            their friendship reaches a crossroads.
+            As the Clone Wars nears its end, Obi-Wan Kenobi pursues a new
+            threat, while Anakin Skywalker is lured by Chancellor Palpatine into
+            a sinister plot for galactic domination.
           </p>
         </div>
         <Button className="w-[145px] h-[40px]">
@@ -83,8 +82,8 @@ const NowplayingDesktop = () => {
   return (
     <div className="hidden flex-col w-full md:flex relative min-w-full">
       <img
-        className="max-h-[600px] w-[1440px] object-cover mx-auto"
-        src="/herostar.png"
+        className="max-h-[600px] w-full object-cover mx-auto object-top"
+        src="/vader.jpg"
         alt=""
       />
       <div className="absolute top-1/2 right-2/9">
@@ -97,7 +96,7 @@ const NowplayingDesktop = () => {
         <div className="flex justify-between items-center py-5">
           <div>
             <p>Now Playing:</p>
-            <h1 className="font-bold text-2xl text-[#fb8500]">Star Wars</h1>
+            <h1 className="font-bold text-2xl text-[#fb8500]">Star Wars III</h1>
           </div>
           <div className="flex">
             <Star fill="#fb8500" color="#fb8500" />
@@ -106,13 +105,12 @@ const NowplayingDesktop = () => {
         </div>
         <div className="pb-5">
           <p className="">
-            Elphaba, a misunderstood young woman because of her green skin, and
-            Glinda, a popular girl, become friends at Shiz University in the
-            Land of Oz. After an encounter with the Wonderful Wizard of Oz,
-            their friendship reaches a crossroads.
+            As the Clone Wars nears its end, Obi-Wan Kenobi pursues a new
+            threat, while Anakin Skywalker is lured by Chancellor Palpatine into
+            a sinister plot for galactic domination.
           </p>
         </div>
-        <Button className="w-[145px] h-[40px] hover:bg-[#fb8500]">
+        <Button className="w-[145px] h-[40px] hover:bg-[#fb8500] dark:hover:text-white">
           <Play /> Watch Trailer
         </Button>
       </div>

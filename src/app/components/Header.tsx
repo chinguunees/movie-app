@@ -13,24 +13,30 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ModeToggle } from "./ModeToggle";
+import { Sword } from "lucide-react";
 
 export const Header = () => {
   return (
-    <div className="h-[59px] md:px-20 bg-white flex items-center pl-5 xl:max-w-[1440px] mx-auto md:max-w-full">
+    <div className="h-[59px] md:px-20 bg-white flex items-center pl-5 xl:max-w-[1440px] mx-auto md:max-w-full dark:bg-[#09090B] ">
       <div className="flex gap-3 md:hidden justify-between w-full">
         <img className="w-[92px]" src="/Logo.svg" alt="" />
         <div>
           <Button variant="outline" size="icon" className="lg:hidden">
             <Search />
           </Button>
-          <Button variant="outline" size="icon">
-            <Moon />
-          </Button>
+
+          <ModeToggle />
         </div>
       </div>
       <div />
-      <div className="hidden gap-50 justify-between max-w-[1440px] md:flex xl:w-[1440px] md:justify-between">
-        <img className="w-[92px]" src="/Logo.svg" alt="" />
+      <div className="hidden gap-50 justify-between max-w-[1440px] md:flex xl:w-[1440px] md:justify-between px-20">
+        <div className="flex items-center gap-2">
+          {" "}
+          <Sword />
+          <p className="font-black">MOVIE</p>
+        </div>
+
         <div className="flex gap-2 ">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -69,9 +75,8 @@ export const Header = () => {
             </Field>
           </div>
         </div>
-        <Button variant="outline" size="icon">
-          <Moon />
-        </Button>
+
+        <ModeToggle />
       </div>
     </div>
   );
