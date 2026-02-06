@@ -23,13 +23,11 @@ export default function Home() {
   // }, []);
   return (
     <div>
-      <Header />
-
       <Nowplaying />
       <Upcoming />
       <Toprated />
       <Popular />
-      <FooterArea />
+
       <Carousel />
     </div>
   );
