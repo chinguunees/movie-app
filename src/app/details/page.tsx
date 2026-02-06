@@ -10,6 +10,7 @@ import { Carousel } from "@/components/ui/carousel";
 import { useEffect } from "react";
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { MoreLike } from "../components/MoreLike";
 
 export default function Home() {
   return (
@@ -64,25 +65,24 @@ const DetailsMobile = () => {
           </div>
         </div>
         <p>
-          Elphaba, a misunderstood young woman because of her green skin, and
-          Glinda, a popular girl, become friends at Shiz University in the Land
-          of Oz. After an encounter with the Wonderful Wizard of Oz, their
-          friendship reaches a crossroads.{" "}
+          As the Clone Wars nears its end, Obi-Wan Kenobi pursues a new threat,
+          while Anakin Skywalker is lured by Chancellor Palpatine into a
+          sinister plot for galactic domination.{" "}
         </p>
         <div className="flex gap-10">
-          <p>Director</p>
+          <p className="font-bold text-[16px]">Director</p>
           <p>Jon M. Chu</p>
         </div>
         <div className="flex gap-10">
-          <p>Writers</p>
+          <p className="font-bold text-[16px]">Writers</p>
           <p>Winnie Holzman. Dana Fox. Gregory Maguire</p>
         </div>
         <div className="flex gap-10">
-          <p>Stars</p>
+          <p className="font-bold text-[16px]">Stars</p>
           <p>Cynthia Erivo. Ariana Grande. Jeff Goldblum</p>
         </div>
       </div>
-      <Upcoming />
+      <MoreLike />
     </div>
   );
 };
@@ -99,16 +99,12 @@ const DetailsDesktop = () => {
             </p>
           </div>
           <div className="flex flex-col">
-            <p>Rating</p>
+            <p className="text-[12px]">Rating</p>
             <div className="flex items-center gap-2">
               <Star fill="white" />
-              <div className="flex items-start">
-                <p className="font-bold">7.9</p>
-                <p>
-                  /10
-                  <br />
-                  32M
-                </p>
+              <div className="flex flex-col items-start">
+                <p className="font-bold">7.9/10</p>
+                <p className="text-[12px] text-gray-500">32K</p>
               </div>
             </div>
           </div>
@@ -125,26 +121,25 @@ const DetailsDesktop = () => {
             <Button variant="outline">Drama</Button>
           </div>
           <p>
-            Elphaba, a misunderstood young woman because of her green skin, and
-            Glinda, a popular girl, become friends at Shiz University in the
-            Land of Oz. After an encounter with the Wonderful Wizard of Oz,
-            their friendship reaches a crossroads.{" "}
+            As the Clone Wars nears its end, Obi-Wan Kenobi pursues a new
+            threat, while Anakin Skywalker is lured by Chancellor Palpatine into
+            a sinister plot for galactic domination.{" "}
           </p>
-          <div className="flex gap-10">
-            <p>Director</p>
+          <div className="flex gap-10 border-b h-10">
+            <p className="font-bold text-[16px] w-16">Director</p>
             <p>Jon M. Chu</p>
           </div>
-          <div className="flex gap-10">
-            <p>Writers</p>
+          <div className="flex gap-10 border-b h-10">
+            <p className="font-bold text-[16px] w-16">Writers</p>
             <p>Winnie Holzman. Dana Fox. Gregory Maguire</p>
           </div>
-          <div className="flex gap-10">
-            <p>Stars</p>
+          <div className="flex gap-10 border-b h-10">
+            <p className="font-bold text-[16px] w-16">Stars</p>
             <p>Cynthia Erivo. Ariana Grande. Jeff Goldblum</p>
           </div>
         </div>
         <div className="mt-[32px]">
-          <Upcoming />
+          <MoreLike />
         </div>
       </div>
     </div>
