@@ -1,7 +1,11 @@
 import { Moviecard } from "./Moviecard";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-export const Popular = () => {
+import { Movie } from "@/lib/types";
+import { getPopularMovies } from "@/lib/api";
+
+export const Popular = async () => {
+  const { results: movies } = await getPopularMovies();
   return (
     <div className="flex justify-center">
       <div className="flex flex-col px-5 2xl:px-20 lg:px-15 md:px-10 max-w-[1437px] ">
@@ -13,22 +17,22 @@ export const Popular = () => {
         </div>
         <div className="flex flex-col px-5 2xl:px-20 lg:px-15 md:px-10 items-center">
           <div className="grid grid-cols-2 md:hidden gap-5">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
+            {movies.slice(0, 10).map((movie) => (
               <Moviecard
-                key={i}
-                img="/starwars.png"
-                rating={7.9}
-                name="Star Wars III"
+                key={movie.id}
+                img={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                rating={movie.vote_average}
+                name={movie.title}
               />
             ))}
           </div>
           <div className="hidden md:grid md:grid-cols-3 md:gap-10 lg:justify-between 2xl:gap-10 lg:grid-cols-4 2xl:grid-cols-5 mt-13 2xl:max-w-[1437px] ">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
+            {movies.slice(0, 10).map((movie) => (
               <Moviecard
-                key={i}
-                img="/starwars.png"
-                rating={7.9}
-                name="Star Wars III"
+                key={movie.id}
+                img={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                rating={movie.vote_average}
+                name={movie.title}
               />
             ))}
           </div>

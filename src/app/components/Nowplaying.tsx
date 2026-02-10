@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import { Play } from "lucide-react";
+import { getNowPlayingMovies } from "@/lib/api";
 
 import {
   Carousel,
@@ -9,66 +10,62 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Image from "next/image";
+import { Movie, MoviesResponse } from "@/lib/types";
 
-const nowplaying = [
-  {
-    id: 1,
-    name: "wicked",
-    desc: "",
-    rating: "",
-    trailer: "",
-  },
-  {
-    id: 2,
-    name: "wicked",
-    desc: "",
-    rating: "",
-    trailer: "",
-  },
-];
+export const Nowplaying = async () => {
+  const { results: movies } = await getNowPlayingMovies();
+  const firstFiveMovies = movies.slice(0, 4);
 
-export const Nowplaying = () => {
   return (
     <Carousel>
       <CarouselContent>
-        {nowplaying.map((item) => (
-          <CarouselItem key={item.id}>
-            <NowplayingMobile />
-            <NowplayingDesktop />
-          </CarouselItem>
-        ))}
+        {firstFiveMovies.map((movie) => {
+          return (
+            <CarouselItem key={movie.id}>
+              <NowplayingMobile movie={movie} />
+              <NowplayingDesktop movie={movie} />
+            </CarouselItem>
+          );
+        })}
       </CarouselContent>
+      <div className="absolute md:top-1/2 md:right-2/9 ">
+        <CarouselNext variant="destructive" />
+      </div>
+      <div className="absolute md:top-1/2 md:left-2/9">
+        <CarouselPrevious variant="destructive" />
+      </div>
     </Carousel>
   );
 };
 
-const NowplayingMobile = () => {
+const NowplayingMobile = ({ movie }: { movie: Movie }) => {
   return (
-    <div className="flex flex-col w-full md:hidden">
-      <img src="/vader.jpg" alt="" />
-      <div className="absolute top-1/4 right-2/9">
-        <CarouselNext />
+    <div className="flex flex-col w-full md:hidden ">
+      <div className="relative w-full h-63 ">
+        <Image
+          src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+          alt={movie.title}
+          fill
+          className="object-cover"
+        />
       </div>
-      <div className="absolute top-1/4 left-2/8">
-        <CarouselPrevious />
-      </div>
+
       <div className="px-5 flex flex-col ">
         <div className="flex justify-between items-center py-5">
           <div>
             <p>Now Playing:</p>
-            <h1 className="font-bold text-2xl text-[#fb8500]">Star Wars III</h1>
+            <h1 className="font-bold text-2xl text-[#fb8500]">
+              {movie.original_title}
+            </h1>
           </div>
           <div className="flex">
             <Star />
-            <p>6.9/10</p>
+            <p>{movie.vote_average}</p>
           </div>
         </div>
         <div className="pb-5">
-          <p>
-            As the Clone Wars nears its end, Obi-Wan Kenobi pursues a new
-            threat, while Anakin Skywalker is lured by Chancellor Palpatine into
-            a sinister plot for galactic domination.
-          </p>
+          <p>{movie.overview}</p>
         </div>
         <Button className="w-[145px] h-[40px]">
           <Play /> Watch Trailer
@@ -78,37 +75,31 @@ const NowplayingMobile = () => {
   );
 };
 
-const NowplayingDesktop = () => {
+const NowplayingDesktop = async ({ movie }: { movie: Movie }) => {
   return (
-    <div className="hidden flex-col w-full md:flex relative min-w-full">
-      <img
-        className="max-h-[600px] w-full object-cover mx-auto object-top"
-        src="/vader.jpg"
-        alt=""
+    <div className="hidden flex-col w-full md:flex relative min-w-full h-180">
+      <Image
+        src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+        alt={movie.title}
+        fill
+        className="object-cover"
       />
-      <div className="absolute top-1/2 right-2/9">
-        <CarouselNext variant="destructive" />
-      </div>
-      <div className="absolute top-1/2 left-2/9">
-        <CarouselPrevious variant="destructive" />
-      </div>
+
       <div className="px-5 flex flex-col absolute text-white md:top-1/4  2xl:top-1/3 right-2/3 translate-x-1/2 w-100 bg-linear-to-b from-[#111111]/66 to-transparent rounded-2xl text-shadow-2xs">
         <div className="flex justify-between items-center py-5">
           <div>
             <p>Now Playing:</p>
-            <h1 className="font-bold text-2xl text-[#fb8500]">Star Wars III</h1>
+            <h1 className="font-bold text-2xl text-[#fb8500]">
+              {movie.original_title}
+            </h1>
           </div>
           <div className="flex">
             <Star fill="#fb8500" color="#fb8500" />
-            <p>6.9/10</p>
+            <p>{movie.vote_average}</p>
           </div>
         </div>
         <div className="pb-5">
-          <p className="">
-            As the Clone Wars nears its end, Obi-Wan Kenobi pursues a new
-            threat, while Anakin Skywalker is lured by Chancellor Palpatine into
-            a sinister plot for galactic domination.
-          </p>
+          <p className="">{movie.overview}</p>
         </div>
         <Button className="w-[145px] h-[40px] hover:bg-[#fb8500] dark:hover:text-white">
           <Play /> Watch Trailer
