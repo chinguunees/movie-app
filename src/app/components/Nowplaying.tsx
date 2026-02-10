@@ -29,10 +29,10 @@ export const Nowplaying = async () => {
           );
         })}
       </CarouselContent>
-      <div className="absolute md:top-1/2 md:right-2/9 ">
+      <div className="absolute top-1/4 right-2/9 md:top-1/2 md:right-2/9 ">
         <CarouselNext variant="destructive" />
       </div>
-      <div className="absolute md:top-1/2 md:left-2/9">
+      <div className="absolute top-1/4 left-2/8 md:top-1/2 md:left-2/9">
         <CarouselPrevious variant="destructive" />
       </div>
     </Carousel>
