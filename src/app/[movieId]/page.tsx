@@ -3,45 +3,66 @@ import Image from "next/image";
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MoreLike } from "../components/MoreLike";
-import { getMovieDetails } from "@/lib/api";
+import { getMovieDetails, MovieDetails } from "@/lib/api";
 
-export default function Home() {
+// import { getMovieDetails } from "@/lib/api";
+
+type MovieDetailsPageProps = {
+  params: Promise<{ movieId: string }>;
+};
+
+export default async function MovieDetailsPage({
+  params,
+}: MovieDetailsPageProps) {
+  const { movieId } = await params;
+  const movie = await getMovieDetails(movieId);
+  console.log(movie);
+
   return (
     <div>
-      <DetailsDesktop />
-      <DetailsMobile />
+      <DetailsDesktop movie={movie} />
+      <DetailsMobile movie={movie} />
     </div>
   );
 }
 
-const DetailsMobile = () => {
+const DetailsMobile = ({ movie }: { movie: MovieDetails }) => {
   return (
     <div className="lg:hidden">
       <div className="flex justify-between items-center mt-8 mx-5">
         <div className="flex flex-col ">
-          <h1 className="font-semibold text-[24px]">Star Wars III</h1>
-          <p className="text-[14px]">2024.11.26 · PG · 2h 40m</p>
+          <h1 className="font-semibold text-[24px]">{movie.title}</h1>
+          <p className="text-[14px]">
+            {movie.release_date} · PG · {movie.runtime} Minutes
+          </p>
         </div>
         <div className="flex flex-col text-[14px]">
           <div className="flex items-center gap-2">
             <Star fill="white" />
             <div className="flex items-start">
-              <p className="font-bold">7.9</p>
+              <p className="font-bold">{movie.vote_average}</p>
               <p>
                 /10
                 <br />
-                32M
+                {movie.vote_count}
               </p>
             </div>
           </div>
         </div>
       </div>
       <div className="mt-4 mx-5">
-        <img src="vader.jpg" alt="" />
+        <img
+          src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+          alt=""
+        />
       </div>
       <div className="flex flex-col mt-8 mx-5 gap-5">
         <div className="flex mx-5 gap-8">
-          <img className="h-[148px] w-[100px]" src="/starwars.png" alt="" />
+          <img
+            className="h-[148px] w-[100px]"
+            src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+            alt=""
+          />
           <div className="grid grid-cols-2 gap-2 items-center">
             <Button size="sm" variant="outline">
               Sci-Fi
@@ -57,11 +78,7 @@ const DetailsMobile = () => {
             </Button>
           </div>
         </div>
-        <p>
-          As the Clone Wars nears its end, Obi-Wan Kenobi pursues a new threat,
-          while Anakin Skywalker is lured by Chancellor Palpatine into a
-          sinister plot for galactic domination.{" "}
-        </p>
+        <p>{movie.overview}</p>
         <div className="flex gap-10">
           <p className="font-bold text-[16px]">Director</p>
           <p>Jon M. Chu</p>
@@ -80,15 +97,19 @@ const DetailsMobile = () => {
   );
 };
 
-const DetailsDesktop = () => {
+type DetailsPageProps = {
+  params: Promise<{ movieId: string }>;
+};
+
+const DetailsDesktop = ({ movie }: { movie: MovieDetails }) => {
   return (
     <div>
       <div className="hidden lg:flex flex-col items-center">
         <div className="flex justify-between items-center mt-[52px] w-screen lg:max-w-[1080px]">
-          <div className="flex flex-col max-w-[240px]">
-            <h1 className="font-extrabold text-[36px]">Star Wars III</h1>
-            <p className="max-w-[240px] text-[18px]">
-              2024.11.26 · PG · 2h 40m
+          <div className="flex flex-col max-w-[440px]">
+            <h1 className="font-extrabold text-[36px]">{movie.title}</h1>
+            <p className="max-w-[440px] text-[18px]">
+              {movie.release_date} · PG · {movie.runtime} Minutes
             </p>
           </div>
           <div className="flex flex-col">
@@ -96,15 +117,23 @@ const DetailsDesktop = () => {
             <div className="flex items-center gap-2">
               <Star fill="white" />
               <div className="flex flex-col items-start">
-                <p className="font-bold">7.9/10</p>
-                <p className="text-[12px] text-gray-500">32K</p>
+                <p className="font-bold">{movie.vote_average}/10</p>
+                <p className="text-[12px] text-gray-500">{movie.vote_count}</p>
               </div>
             </div>
           </div>
         </div>
         <div className="flex mx-100 mt-[24px] gap-[32px] w-screen lg:max-w-[1080px]">
-          <img className="h-[428px] w-[290px]" src="/starwars.png" alt="" />
-          <img className="h-[428px] w-[760px]" src="/vader.jpg" alt="" />
+          <img
+            className="h-[428px] w-[290px]"
+            src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+            alt=""
+          />
+          <img
+            className="h-[428px] w-[760px]"
+            src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+            alt=""
+          />
         </div>
         <div className="flex flex-col mx-100 mt-[32px] gap-[20px] w-screen max-w-[1080px]">
           <div className="flex gap-5">
@@ -113,11 +142,7 @@ const DetailsDesktop = () => {
             <Button variant="outline">Adventure</Button>
             <Button variant="outline">Drama</Button>
           </div>
-          <p>
-            As the Clone Wars nears its end, Obi-Wan Kenobi pursues a new
-            threat, while Anakin Skywalker is lured by Chancellor Palpatine into
-            a sinister plot for galactic domination.{" "}
-          </p>
+          <p>{movie.overview}</p>
           <div className="flex gap-10 border-b h-10">
             <p className="font-bold text-[16px] w-16">Director</p>
             <p>Jon M. Chu</p>
