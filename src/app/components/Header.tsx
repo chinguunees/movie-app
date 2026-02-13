@@ -17,6 +17,7 @@ import { ModeToggle } from "./ModeToggle";
 import { Sword } from "lucide-react";
 import { useState } from "react";
 import { SearchInput } from "../test/SearchMovie";
+import Link from "next/link";
 
 export const Header = () => {
   return (
@@ -33,11 +34,13 @@ export const Header = () => {
       </div>
       <div />
       <div className="hidden gap-50 justify-between max-w-[1440px] md:flex xl:w-[1440px] md:justify-between px-20">
-        <div className="flex items-center gap-2">
-          {" "}
-          <Sword />
-          <p className="font-black">MOVIE</p>
-        </div>
+        <Link className="flex" href="/">
+          <div className="flex items-center gap-2">
+            {" "}
+            <Sword />
+            <p className="font-black">MOVIE</p>
+          </div>
+        </Link>
 
         <div className="flex gap-2 ">
           <DropdownMenu>

@@ -61,7 +61,7 @@ const NowplayingMobile = ({ movie }: { movie: Movie }) => {
           </div>
           <div className="flex">
             <Star />
-            <p>{movie.vote_average}</p>
+            <p>{movie.vote_average.toFixed(1)}</p>
           </div>
         </div>
         <div className="pb-5">
@@ -95,7 +95,7 @@ const NowplayingDesktop = async ({ movie }: { movie: Movie }) => {
           </div>
           <div className="flex">
             <Star fill="#fb8500" color="#fb8500" />
-            <p>{movie.vote_average}</p>
+            <p>{movie.vote_average.toFixed(1)}</p>
           </div>
         </div>
         <div className="pb-5">

@@ -9,7 +9,7 @@ export const Moviecard = (props: MovieDetailsProps) => {
         <div className="p-2">
           <div className="flex">
             <Star size={20} color="#FDE047" fill="#FDE047" />
-            <p className="text-[12px]">{rating}</p>
+            <p className="text-[12px]">{rating.toFixed(1)}</p>
           </div>
           <h1 className="font-medium text-[14px] mt-1">{name}</h1>
         </div>
@@ -19,7 +19,7 @@ export const Moviecard = (props: MovieDetailsProps) => {
         <div className="p-2 mt-3 rounded-2xl ">
           <div className="flex">
             <Star size={20} color="#FDE047" fill="#FDE047" />
-            <p className="text-[14px]">{rating}</p>
+            <p className="text-[14px]">{rating.toFixed(1)}</p>
           </div>
           <h1 className="font-medium text-[18px] mt-1">{name}</h1>
         </div>
