@@ -16,6 +16,7 @@ import {
 import { ModeToggle } from "./ModeToggle";
 import { Sword } from "lucide-react";
 import { useState } from "react";
+import { SearchInput } from "../test/SearchMovie";
 
 export const Header = () => {
   return (
@@ -67,13 +68,7 @@ export const Header = () => {
             </DropdownMenuContent>
           </DropdownMenu>
           <div className="max-w-150 min-w-10">
-            <Field orientation="horizontal">
-              <Input type="search" placeholder="Search..." />
-              {/* <Button variant="outline" size="icon">
-              {" "}
-              <Search />{" "}
-            </Button> */}
-            </Field>
+            <SearchInput />
           </div>
         </div>
 
