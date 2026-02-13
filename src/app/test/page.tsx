@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { SearchInput } from "@/app/test/SearchMovie";
 
 const Home = () => {
   const [count, setCount] = useState(0);
@@ -17,6 +18,7 @@ const Home = () => {
     <div className="flex m-10 items-center justify-center gap-5 font-black text-2xl">
       {count}
       <Button onClick={increaseCount}> test</Button>
+      <SearchInput></SearchInput>
     </div>
   );
 };

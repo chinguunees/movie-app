@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ModeToggle } from "./ModeToggle";
 import { Sword } from "lucide-react";
+import { useState } from "react";
 
 export const Header = () => {
   return (

@@ -1,4 +1,4 @@
-import { MoviesResponse } from "./types";
+import { Movie, MoviesResponse } from "./types";
 
 const urlPopular = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1`;
 const token =
@@ -62,6 +62,18 @@ export const getMovieDetails = async (
 //   const data = await response.json();
 //   return data;
 // };
+
+// const urlSearchMovies = `https://api.themoviedb.org/3/search/movie?query=${searchValue}&language=en-US&`;
+export const searchMovies = async (
+  searchValue: string,
+): Promise<MoviesResponse> => {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/search/movie?query=${searchValue}&language=en-US&`,
+    options,
+  );
+  const data = await response.json();
+  return data;
+};
 
 export interface MovieDetails {
   adult: boolean;
