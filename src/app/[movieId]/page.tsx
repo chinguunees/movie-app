@@ -4,6 +4,7 @@ import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MoreLike } from "../components/MoreLike";
 import { getMovieDetails, MovieDetails } from "@/lib/api";
+import Link from "next/link";
 
 // import { getMovieDetails } from "@/lib/api";
 
@@ -40,7 +41,7 @@ const DetailsMobile = ({ movie }: { movie: MovieDetails }) => {
           <div className="flex items-center gap-2">
             <Star fill="white" />
             <div className="flex items-start">
-              <p className="font-bold">{movie.vote_average}</p>
+              <p className="font-bold">{movie.vote_average.toFixed(1)}</p>
               <p>
                 /10
                 <br />
@@ -117,7 +118,7 @@ const DetailsDesktop = ({ movie }: { movie: MovieDetails }) => {
             <div className="flex items-center gap-2">
               <Star fill="white" />
               <div className="flex flex-col items-start">
-                <p className="font-bold">{movie.vote_average}/10</p>
+                <p className="font-bold">{movie.vote_average.toFixed(1)}/10</p>
                 <p className="text-[12px] text-gray-500">{movie.vote_count}</p>
               </div>
             </div>
