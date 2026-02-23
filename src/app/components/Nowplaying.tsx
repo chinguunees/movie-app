@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import { Play } from "lucide-react";
 import { getNowPlayingMovies } from "@/lib/api";
-
+import { getMovieDetails, MovieDetails } from "@/lib/api";
 import {
   Carousel,
   CarouselContent,
@@ -12,6 +12,10 @@ import {
 } from "@/components/ui/carousel";
 import Image from "next/image";
 import { Movie, MoviesResponse } from "@/lib/types";
+import Link from "next/link";
+type MovieDetailsPageProps = {
+  params: Promise<{ movieId: string }>;
+};
 
 export const Nowplaying = async () => {
   const { results: movies } = await getNowPlayingMovies();
@@ -67,9 +71,11 @@ const NowplayingMobile = ({ movie }: { movie: Movie }) => {
         <div className="pb-5">
           <p>{movie.overview}</p>
         </div>
-        <Button className="w-[145px] h-[40px]">
-          <Play /> Watch Trailer
-        </Button>
+        <Link href={`/${movie.id}`}>
+          <Button className="w-[145px] h-[40px]">
+            <Play /> Watch Trailer
+          </Button>
+        </Link>
       </div>
     </div>
   );
@@ -101,9 +107,11 @@ const NowplayingDesktop = async ({ movie }: { movie: Movie }) => {
         <div className="pb-5">
           <p className="">{movie.overview}</p>
         </div>
-        <Button className="w-[145px] h-[40px] hover:bg-[#fb8500] dark:hover:text-white">
-          <Play /> Watch Trailer
-        </Button>
+        <Link href={`/${movie.id}`}>
+          <Button className="w-[145px] h-[40px] hover:bg-[#fb8500] dark:hover:text-white">
+            <Play /> Watch Trailer
+          </Button>
+        </Link>
       </div>
     </div>
   );

@@ -34,6 +34,18 @@ export const getTopratedMovies = async (): Promise<MoviesResponse> => {
   return data;
 };
 
+const urlSimiliarMovies = (id: string) => {
+  return `https://api.themoviedb.org/3/movie/${id}/similar?language=en-US`;
+};
+
+export const getSimiliarMovies = async (
+  id: string,
+): Promise<MoviesResponse> => {
+  const response = await fetch(urlSimiliarMovies(id), options);
+  const data = await response.json();
+  return data;
+};
+
 const urlNowplaying = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1`;
 
 export const getNowPlayingMovies = async (): Promise<MoviesResponse> => {
@@ -49,6 +61,16 @@ export const getMovieDetails = async (
   movieId: string,
 ): Promise<MovieDetails> => {
   const response = await fetch(urlDetails(movieId), options);
+  const data = await response.json();
+  return data;
+};
+
+const urlTrailer = () => {
+  return `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`;
+};
+
+export const getMovieTrailer = async (id: string): Promise<MovieDetails> => {
+  const response = await fetch(urlTrailer(id), options);
   const data = await response.json();
   return data;
 };

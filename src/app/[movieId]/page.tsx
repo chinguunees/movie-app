@@ -93,7 +93,7 @@ const DetailsMobile = ({ movie }: { movie: MovieDetails }) => {
           <p>Cynthia Erivo. Ariana Grande. Jeff Goldblum</p>
         </div>
       </div>
-      <MoreLike />
+      <MoreLike id={movie.id} />
     </div>
   );
 };
@@ -158,7 +158,7 @@ const DetailsDesktop = ({ movie }: { movie: MovieDetails }) => {
           </div>
         </div>
         <div className="mt-[32px]">
-          <MoreLike />
+          <MoreLike id={movie.id} />
         </div>
       </div>
     </div>
