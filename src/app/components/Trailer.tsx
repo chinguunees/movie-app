@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { getMovieTrailer } from "@/lib/api";
+// import Link from "next/link";
+// import { getMovieTrailer } from "@/lib/api";
 
 type MovieDetailsPageProps = {
   id: any;

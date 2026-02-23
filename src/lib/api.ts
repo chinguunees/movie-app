@@ -65,15 +65,15 @@ export const getMovieDetails = async (
   return data;
 };
 
-const urlTrailer = () => {
-  return `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`;
-};
+// const urlTrailer = () => {
+//   return `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`;
+// };
 
-export const getMovieTrailer = async (id: string): Promise<MovieDetails> => {
-  const response = await fetch(urlTrailer(id), options);
-  const data = await response.json();
-  return data;
-};
+// export const getMovieTrailer = async (id: string): Promise<MovieDetails> => {
+//   const response = await fetch(urlTrailer(id), options);
+//   const data = await response.json();
+//   return data;
+// };
 
 // const urlCredit = (movie_id: string) => {
 //   return `https://api.themoviedb.org/3/movie/${movie_id}/credits`;
