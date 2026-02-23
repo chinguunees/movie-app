@@ -21,7 +21,11 @@ export const Moviecard = (props: MovieDetailsProps) => {
             <Star size={20} color="#FDE047" fill="#FDE047" />
             <p className="text-[14px]">{rating.toFixed(1)}</p>
           </div>
-          <h1 className="font-medium text-[18px] mt-1">{name}</h1>
+          <h1
+            className={`font-medium ${name.length > 20 ? "text-[15px]" : "text-[18px]"} mt-1`}
+          >
+            {name}
+          </h1>
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { MoreLike } from "../components/MoreLike";
 import { getMovieDetails, MovieDetails } from "@/lib/api";
 import Link from "next/link";
+import { TrailerMovie } from "../components/Trailer";
 
 // import { getMovieDetails } from "@/lib/api";
 
@@ -130,11 +131,12 @@ const DetailsDesktop = ({ movie }: { movie: MovieDetails }) => {
             src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
             alt=""
           />
-          <img
+          <TrailerMovie id={movie.id} />
+          {/* <img
             className="h-[428px] w-[760px]"
             src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
             alt=""
-          />
+          /> */}
         </div>
         <div className="flex flex-col mx-100 mt-[32px] gap-[20px] w-screen max-w-[1080px]">
           <div className="flex gap-5">

@@ -65,15 +65,14 @@ export const getMovieDetails = async (
   return data;
 };
 
-// const urlTrailer = () => {
-//   return `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`;
-// };
-
-// export const getMovieTrailer = async (id: string): Promise<MovieDetails> => {
-//   const response = await fetch(urlTrailer(id), options);
-//   const data = await response.json();
-//   return data;
-// };
+export const getMovieTrailer = async (id: string): Promise<Trailer> => {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}/videos`,
+    options,
+  );
+  const data = await response.json();
+  return data;
+};
 
 // const urlCredit = (movie_id: string) => {
 //   return `https://api.themoviedb.org/3/movie/${movie_id}/credits`;
@@ -123,6 +122,20 @@ export interface MovieDetails {
   video: boolean;
   vote_average: number;
   vote_count: number;
+}
+
+export interface Trailer {
+  iso_639_1: string;
+  iso_3166_1: string;
+  name: string;
+  key: string;
+  site: string;
+  size: number;
+  type: string;
+  official: boolean;
+  published_at: string;
+  id: string;
+  results: any[];
 }
 
 export interface Genre {
