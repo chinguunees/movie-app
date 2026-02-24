@@ -17,7 +17,7 @@ export const Moviecard = (props: MovieDetailsProps) => {
       <div className="hidden md:flex mt-5 w-[229px] h-[439px] rounded-2xl bg-[#eef0f2] dark:bg-[#27272A] flex-col hover:bg-[#fb8500] hover:text-white hover:drop-shadow-2xl hover:ease-in hover:font-bold transition-colors duration-100 dark:border dark:hover:bg-[#fb8500] dark:hover:drop-shadow-zinc-700 ">
         <img className="rounded-t-2xl h-85" src={img} alt="poster" />
         <div className="p-2 mt-3 rounded-2xl ">
-          <div className="flex">
+          <div className="flex gap-1">
             <Star size={20} color="#FDE047" fill="#FDE047" />
             <p className="text-[14px]">{rating.toFixed(1)}</p>
           </div>
