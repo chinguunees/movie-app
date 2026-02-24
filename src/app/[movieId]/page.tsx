@@ -6,6 +6,10 @@ import { MoreLike } from "../components/MoreLike";
 import { getMovieDetails, MovieDetails } from "@/lib/api";
 import Link from "next/link";
 import { TrailerMovie } from "../components/Trailer";
+import { CreditMovie } from "../components/Credit";
+import { CrewMovie } from "../components/Crew";
+import { DirectorMovie } from "../components/Director";
+import { Badge } from "@/components/ui/badge";
 
 // import { getMovieDetails } from "@/lib/api";
 
@@ -83,15 +87,15 @@ const DetailsMobile = ({ movie }: { movie: MovieDetails }) => {
         <p>{movie.overview}</p>
         <div className="flex gap-10">
           <p className="font-bold text-[16px]">Director</p>
-          <p>Jon M. Chu</p>
+          <DirectorMovie id={movie.id} />
         </div>
         <div className="flex gap-10">
           <p className="font-bold text-[16px]">Writers</p>
-          <p>Winnie Holzman. Dana Fox. Gregory Maguire</p>
+          <CrewMovie id={movie.id} />
         </div>
         <div className="flex gap-10">
           <p className="font-bold text-[16px]">Stars</p>
-          <p>Cynthia Erivo. Ariana Grande. Jeff Goldblum</p>
+          <CreditMovie id={movie.id} />
         </div>
       </div>
       <MoreLike id={movie.id} />
@@ -104,6 +108,12 @@ type DetailsPageProps = {
 };
 
 const DetailsDesktop = ({ movie }: { movie: MovieDetails }) => {
+  console.log("genre test", movie.genres);
+  const movieGenres = movie.genres.map((m) => {
+    return m.name;
+  });
+  // .join(",    ");
+
   return (
     <div>
       <div className="hidden lg:flex flex-col items-center">
@@ -140,23 +150,29 @@ const DetailsDesktop = ({ movie }: { movie: MovieDetails }) => {
         </div>
         <div className="flex flex-col mx-100 mt-[32px] gap-[20px] w-screen max-w-[1080px]">
           <div className="flex gap-5">
-            <Button variant="outline">Sci-Fi</Button>
+            {movie.genres.map((genre) => (
+              <Badge key={genre.id} variant={"outline"}>
+                {genre.name}{" "}
+              </Badge>
+            ))}
+            {/* <Button variant="outline">{movieGenres}</Button>
+            <Badge> {movieGenres} </Badge>
             <Button variant="outline">Action</Button>
             <Button variant="outline">Adventure</Button>
-            <Button variant="outline">Drama</Button>
+            <Button variant="outline">Drama</Button> */}
           </div>
           <p>{movie.overview}</p>
           <div className="flex gap-10 border-b h-10">
             <p className="font-bold text-[16px] w-16">Director</p>
-            <p>Jon M. Chu</p>
+            <DirectorMovie id={movie.id} />
           </div>
           <div className="flex gap-10 border-b h-10">
             <p className="font-bold text-[16px] w-16">Writers</p>
-            <p>Winnie Holzman. Dana Fox. Gregory Maguire</p>
+            <CrewMovie id={movie.id} />
           </div>
           <div className="flex gap-10 border-b h-10">
-            <p className="font-bold text-[16px] w-16">Stars</p>
-            <p>Cynthia Erivo. Ariana Grande. Jeff Goldblum</p>
+            <p className="font-bold text-[16px]">Stars</p>
+            <CreditMovie id={movie.id} />
           </div>
         </div>
         <div className="mt-[32px]">

@@ -74,15 +74,14 @@ export const getMovieTrailer = async (id: string): Promise<Trailer> => {
   return data;
 };
 
-// const urlCredit = (movie_id: string) => {
-//   return `https://api.themoviedb.org/3/movie/${movie_id}/credits`;
-// };
-
-// export const getCredit = async () => {
-//   const response = await fetch(urlCredit(movie_id), options);
-//   const data = await response.json();
-//   return data;
-// };
+export const getCredit = async (id: number): Promise<Credit> => {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}/credits`,
+    options,
+  );
+  const data = await response.json();
+  return data;
+};
 
 // const urlSearchMovies = `https://api.themoviedb.org/3/search/movie?query=${searchValue}&language=en-US&`;
 export const searchMovies = async (
