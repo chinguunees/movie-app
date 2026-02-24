@@ -91,7 +91,7 @@ const NowplayingDesktop = async ({ movie }: { movie: Movie }) => {
         className="object-cover"
       />
 
-      <div className="px-5 flex flex-col absolute text-white md:top-1/4  2xl:top-1/3 right-2/3 translate-x-1/2 w-100 bg-linear-to-b from-[#111111]/66 to-transparent rounded-2xl text-shadow-2xs">
+      <div className="px-5 flex flex-col absolute text-[#212529] dark:text-white md:top-1/4  2xl:top-1/3 right-2/3 translate-x-1/2 w-100 dark:bg-black/77 rounded-2xl dark:text-shadow-2xs bg-white h-74">
         <div className="flex justify-between items-center py-5">
           <div>
             <p>Now Playing:</p>
