@@ -57,10 +57,7 @@ const DetailsMobile = ({ movie }: { movie: MovieDetails }) => {
         </div>
       </div>
       <div className="mt-4 mx-5">
-        <img
-          src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-          alt=""
-        />
+        <TrailerMovie id={movie.id} />
       </div>
       <div className="flex flex-col mt-8 mx-5 gap-5">
         <div className="flex mx-5 gap-8">
@@ -70,18 +67,11 @@ const DetailsMobile = ({ movie }: { movie: MovieDetails }) => {
             alt=""
           />
           <div className="grid grid-cols-2 gap-2 items-center">
-            <Button size="sm" variant="outline">
-              Sci-Fi
-            </Button>
-            <Button size="sm" variant="outline">
-              Action
-            </Button>
-            <Button size="sm" variant="outline">
-              Adventure
-            </Button>
-            <Button size="sm" variant="outline">
-              Drama
-            </Button>
+            {movie.genres.map((genre) => (
+              <Badge key={genre.id} variant={"outline"}>
+                {genre.name}{" "}
+              </Badge>
+            ))}
           </div>
         </div>
         <p>{movie.overview}</p>
