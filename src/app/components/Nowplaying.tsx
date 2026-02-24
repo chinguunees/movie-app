@@ -99,9 +99,9 @@ const NowplayingDesktop = async ({ movie }: { movie: Movie }) => {
               {movie.original_title}
             </h1>
           </div>
-          <div className="flex">
+          <div className="flex gap-1">
             <Star fill="#fb8500" color="#fb8500" />
-            <p>{movie.vote_average.toFixed(1)}</p>
+            <p className="font-bold">{movie.vote_average.toFixed(1)}</p>
           </div>
         </div>
         <div className="pb-5">
