@@ -6,6 +6,7 @@ import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { ChangeEventHandler, useEffect, useState } from "react";
 import { searchMovies } from "@/lib/api";
+import Link from "next/link";
 
 export const SearchInput = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -48,8 +49,19 @@ export const SearchInput = () => {
       <div
         className={`bg-white h-auto w-150 rounded-2xl text-black p-5 font-normal z-50 absolute ${movies.length === 0 ? "hidden" : "block"}`}
       >
-        {movies.map((movie) => (
-          <p key={movie.id}>{movie.title}</p>
+        {movies.slice(0, 8).map((movie) => (
+          <div className="flex gap-2 items-center">
+            <Link href={`/${movie.id}`} key={movie.id}>
+              <div className="flex gap-2 items-center">
+                <img
+                  className="w-[67px] h-[100px] rounded-lg mb-3"
+                  src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                  alt=""
+                />
+                <p>{movie.title}</p>
+              </div>
+            </Link>
+          </div>
         ))}
       </div>
     </div>
