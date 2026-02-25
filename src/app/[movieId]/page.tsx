@@ -10,6 +10,14 @@ import { CreditMovie } from "../components/Credit";
 import { CrewMovie } from "../components/Crew";
 import { DirectorMovie } from "../components/Director";
 import { Badge } from "@/components/ui/badge";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 // import { getMovieDetails } from "@/lib/api";
 
@@ -88,6 +96,28 @@ const DetailsMobile = ({ movie }: { movie: MovieDetails }) => {
           <CreditMovie id={movie.id} />
         </div>
       </div>
+      <div>
+        <Dialog>
+          <DialogTrigger className="border-1 rounded-2xl bg-white text-black h-10 w-40 hover:bg-red-300 font-bold mt-10 items-start">
+            🍿 Watch Movie
+          </DialogTrigger>
+          <DialogContent className="min-h-screen min-w-screen p-0 m-0 border-0">
+            <DialogHeader>
+              <DialogTitle>{movie.title}</DialogTitle>
+              <DialogDescription>
+                <iframe
+                  className="h-screen"
+                  src={`https://www.vidking.net/embed/movie/${movie.id}`}
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  allowFullScreen
+                ></iframe>
+              </DialogDescription>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
+      </div>
       <MoreLike id={movie.id} />
     </div>
   );
@@ -164,6 +194,28 @@ const DetailsDesktop = ({ movie }: { movie: MovieDetails }) => {
             <p className="font-bold text-[16px]">Stars</p>
             <CreditMovie id={movie.id} />
           </div>
+        </div>
+        <div className="flex items-start">
+          <Dialog>
+            <DialogTrigger className="border-1 rounded-2xl bg-white text-black h-10 w-40 hover:bg-[#fb8500] hover:text-white font-bold mt-10 items-start">
+              🍿 Watch Movie
+            </DialogTrigger>
+            <DialogContent className="min-h-screen min-w-screen p-0 m-0 border-0">
+              <DialogHeader>
+                <DialogTitle>{movie.title}</DialogTitle>
+                <DialogDescription>
+                  <iframe
+                    className="h-screen"
+                    src={`https://www.vidking.net/embed/movie/${movie.id}`}
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    allowFullScreen
+                  ></iframe>
+                </DialogDescription>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
         </div>
         <div className="mt-[32px]">
           <MoreLike id={movie.id} />
