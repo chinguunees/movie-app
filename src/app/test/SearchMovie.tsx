@@ -33,7 +33,9 @@ export const SearchInput = () => {
 
     return () => clearTimeout(timer);
   }, [searchValue]);
-
+  const cancelSearch = () => {
+    setSearchValue("");
+  };
   movies.map((movie) => console.log(movie.id));
 
   return (
@@ -51,7 +53,7 @@ export const SearchInput = () => {
       >
         {movies.slice(0, 8).map((movie) => (
           <div className="flex gap-2 items-center">
-            <Link href={`/${movie.id}`} key={movie.id}>
+            <Link onClick={cancelSearch} href={`/${movie.id}`} key={movie.id}>
               <div className="flex gap-2 items-center">
                 <img
                   className="w-[67px] h-[100px] rounded-lg mb-3"
