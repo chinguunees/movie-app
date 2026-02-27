@@ -49,14 +49,14 @@ export const SearchInput = () => {
         />
       </Field>
       <div
-        className={`bg-white h-auto w-150 rounded-2xl text-black p-5 font-normal z-50 absolute ${movies.length === 0 ? "hidden" : "block"}`}
+        className={`bg-white dark:text-white dark:bg-[#27272A] h-auto w-150 rounded-2xl text-black p-5 font-normal z-50 absolute ${movies.length === 0 ? "hidden" : "block"}`}
       >
         {movies.slice(0, 8).map((movie) => (
-          <div className="flex gap-2 items-center">
+          <div className="flex gap-2 items-center" key={movie.id}>
             <Link onClick={cancelSearch} href={`/${movie.id}`} key={movie.id}>
-              <div className="flex gap-2 items-center">
+              <div className="flex gap-2 items-center dark:hover:bg-[#fb8500] rounded-2xl w-140 ">
                 <img
-                  className="w-[67px] h-[100px] rounded-lg mb-3"
+                  className="w-[67px] h-[100px] rounded-lg my-3 ml-3"
                   src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                   alt=""
                 />
@@ -65,6 +65,14 @@ export const SearchInput = () => {
             </Link>
           </div>
         ))}
+        <Link
+          href={`./Searchdetail?searchValue=${searchValue}`}
+          onClick={cancelSearch}
+        >
+          <p className="dark:hover:text-[#fb8500] w-140 border-t-1 mt-5 pt-3 ml-3">
+            See More
+          </p>
+        </Link>
       </div>
     </div>
   );

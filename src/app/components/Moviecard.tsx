@@ -22,7 +22,7 @@ export const Moviecard = (props: MovieDetailsProps) => {
             <p className="text-[14px]">{rating.toFixed(1)}</p>
           </div>
           <h1
-            className={`font-medium ${name.length > 20 ? "text-[15px]" : "text-[18px]"} mt-1`}
+            className={`font-medium ${name.length > 20 ? "text-[15px]" : "text-[18px]"} truncate mt-1`}
           >
             {name}
           </h1>
